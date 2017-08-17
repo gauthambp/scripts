@@ -1,0 +1,9 @@
+@echo off
+cd /d "D:\"
+
+
+
+set /p delBuild=Enter node name
+ECHO We will be adding agent to node "%delBuild%"
+
+START cmd.exe /k ovownodeutil -add_nodewithtype -node_name %delBuild%.bedford.progress.com -ostype "LINUX" -osversion "CentOS 6.X (2.6)" -systemtype "x86/x64 Compatible" -osbits "64" -agent_bin_format "x64" -group_id "{863A0AF3-6240-4C11-91B0-B08FAD891F4A}" && scp -r \\ntmaomw\HTTPS\linux\linux\2.6\x64\Operations-agent\08.60.005\64 gpujari@%delBuild%:/tmp && putty -ssh gpujari@%delBuild%
