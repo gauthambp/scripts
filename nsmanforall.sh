@@ -35,7 +35,9 @@ TC_RELEASE_DIR="${RELEASE_PATH}/webapps_${TIMESTAMP}"
 PORT_NUMBER="20944"
 VERSION="111"
 
-if ps -eaf | grep "/usr/local/dlc/111/" | grep "root" > /dev/null 2>&1;then
+for vers in 111 116 102B 115
+do
+if ps -eaf | grep "/usr/local/dlc/$vers/" | grep "root" > /dev/null 2>&1;then
   if ps -eaf | grep "rmi://$HOSTNAME:$PORT_NUMBER/NS1" | grep "root" > /dev/null 2>&1 ;then
   res=`ps -eaf | grep "rmi://$HOSTNAME:$PORT_NUMBER/NS1"| grep "root"`
   ver=111 . /usr/local/dlc/bin/dlcverset
@@ -44,19 +46,6 @@ if ps -eaf | grep "/usr/local/dlc/111/" | grep "root" > /dev/null 2>&1;then
 
   for word in $(cat echogpAS.txt);do echo $word;word=${word:3};nsman -i $word -port 20944 -q ;done
 
-  rm echogpAS.txt
-  fi
-fi
-
-
-if ps -eaf | grep "/usr/local/dlc/116/" | grep "root" > /dev/null 2>&1;then
-  if ps -eaf | grep "rmi://$HOSTNAME:$PORT_NUMBER/NS1" | grep "root" > /dev/null 2>&1 ;then
-  res=`ps -eaf | grep "rmi://$HOSTNAME:$PORT_NUMBER/NS1"| grep "root"`
-  ver=116 . /usr/local/dlc/bin/dlcverset
-
-  nsman -i NS1 -port 20944 -q | grep -e  AS -e WS | awk '{print $2}' > echogpAS.txt
-
-  for word in $(cat echogpAS.txt);do echo $word;word=${word:3};nsman -i $word -port 20944 -q ;done
   rm echogpAS.txt
   fi
 fi
