@@ -17,6 +17,7 @@
 # Use this format on Linux hosts: USER="`/usr/bin/id -un`"
 USER="`/usr/bin/id -un`"
 TIMESTAMP=`date "+%Y%m%d_%H%M%S"`
+PORT_NUMBER="20944"
 
 
 
@@ -28,13 +29,17 @@ if ps -eaf | grep "/usr/local/dlc/$vers/" | grep "root" > /dev/null 2>&1;then
   ver=$vers . /usr/local/dlc/bin/dlcverset
 
     if [[ $OSTYPE == "solaris2.10"  ]]; then
-      nsman -i NS1 -port 20944 -q |  /usr/xpg4/bin/grep -e  AS -e WS | awk '{print $2}' > echogpAS.txt
+      /usr/ucb/ps wwaux | grep "$PORT_NUMBER" | grep "root" > /dev/null 2>&1
+      nsman -i NS1 -port $PORT_NUMBER -q |  /usr/xpg4/bin/grep -e  AS -e WS | awk '{print $2}' > echogpAS.txt
     else
       nsman -i NS1 -port 20944 -q | grep -e  AS -e WS | awk '{print $2}' > echogpAS.txt
     fi
-  for word in $(cat echogpAS.txt);do echo $word;word=${word:3};nsman -i $word -port 20944 -q ;done
 
-  rm echogpAS.txt
+    for word in `cat echogpAS.txt`;do
+    word=${word:3}
+    nsman -i $word -port 20944 -q
+    done
+    rm echogpAS.txt
   fi
 fi
 done
