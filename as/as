@@ -17,12 +17,6 @@ printf "3-qadcheckout -To deploy code on Prod\n"
 printf "4-Gather script and promon for db\n"
 printf "5-Check ALL appserver status\n"
 printf "6-Check qxtend qdoc log for ESD\n"
-#printf "7-cpd52_WS$ENVI\n"
-#printf "8-qadui_WS$ENVI\n"
-#printf "9-qadsi_AS$ENVI\n"
-#printf "10-qadui_AS$ENVI\n"
-#printf "11-DB logs\n"
-#printf "12-Shut.all,Start.all,Refresh.all logs\n"
 printf "x -exit\n"
 
 read selection
@@ -32,9 +26,11 @@ case "$selection" in
 
 1) ./logstat ;;
 2) ./qadstat ;;
-3) echo "Deploy as root ,Enter root password"
-su root qaddepprod.sh ;;
-4) /home/gpujari/dblogin
+3) ./qaddepprod.sh ;;
+4) ./dblogin ;;
+5)./apptest.sh
+;;
+6)./checkqxtendforesd
 ;;
 x)
 exit;;
