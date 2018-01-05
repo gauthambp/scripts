@@ -1,0 +1,253 @@
+#!/bin/bash
+
+#This script will help to list the appservers and start,shutdown and see the status of 
+#individual appservers based on the requirement.
+#[qtc-infra-services@progress.com]
+
+func ()
+{
+BASEDIR=/usr/local
+BINDIR=$BASEDIR/admin/bin
+}
+
+
+
+function func_qadfin 
+{
+  func
+  while true
+  do
+  $BINDIR/statapsv area=qadee2010/qtcprod ver=as3 pf=qadfinqtcprod-as 
+  echo "========================"
+  echo "Select the action"
+  echo "========================"
+  echo "1) START"
+  echo "2) SHUTDOWN"
+  echo "3) STATUS"
+  echo "q) Go to the Main Menu"
+  read qadfin 
+  case "$qadfin" in
+    1) /apps/qadee2010/qdt/envs/qtcprod/scripts/startqadfinqtcprod.ksh ;;
+    2) read -p "Do you really want to shutdown qadfin Appserver?[Y/N]" answer
+       if [[ $answer = Y ]] ; then
+          $BINDIR/shutapsv area=qadee2010/qtcprod ver=as3 pf=qadfinqtcprod-as
+       else
+          break
+       fi ;;
+    3) $BINDIR/statapsv area=qadee2010/qtcprod ver=as3 pf=qadfinqtcprod-as ;;
+    q) break ;;
+  esac
+  done
+}
+
+
+
+function func_qadui
+{
+  func
+  while true
+  do
+  $BINDIR/statapsv area=qadee2010/qtcprod ver=as3 pf=qadui_ASqtcprod-as
+  echo "========================"
+  echo "Select the action"
+  echo "========================"
+  echo "1) START"
+  echo "2) SHUTDOWN"
+  echo "3) STATUS"
+  echo "q) Go to the Main Menu"
+  read qadui
+  case "$qadui" in
+    1) $BINDIR/startapsv area=qadee2010/qtcprod ver=as3 pf=qadui_ASqtcprod-as ;;
+    2) read -p "Do you really want to shutdown qadui Appserver?[Y/N]" answer
+       if [[ $answer = Y ]] ; then
+          $BINDIR/shutapsv area=qadee2010/qtcprod ver=as3 pf=qadui_ASqtcprod-as
+       else
+          break
+       fi ;;
+    3) $BINDIR/statapsv area=qadee2010/qtcprod ver=as3 pf=qadui_ASqtcprod-as ;;
+    q) break ;;
+  esac
+  done
+}
+
+
+
+function func_qadsi
+{
+  func
+  while true
+  do
+  $BINDIR/statapsv area=qadee2010/qtcprod ver=as3 pf=qadsi_ASqtcprod-as
+  echo "========================"
+  echo "Select the action"
+  echo "========================"
+  echo "1) START"
+  echo "2) SHUTDOWN"
+  echo "3) STATUS"
+  echo "q) Go to the Main Menu"
+  read qadsi
+  case "$qadsi" in
+    1) $BINDIR/startapsv area=qadee2010/qtcprod ver=as3 pf=qadsi_ASqtcprod-as ;;
+    2) read -p "Do you really want to shutdown qadsi Appserver?[Y/N]" answer 
+       if [[ $answer = Y ]] ; then
+         $BINDIR/shutapsv area=qadee2010/qtcprod ver=as3 pf=qadsi_ASqtcprod-as
+       else
+         break
+       fi ;;
+    3) $BINDIR/statapsv area=qadee2010/qtcprod ver=as3 pf=qadsi_ASqtcprod-as ;;
+    q) break ;;
+  esac
+  done
+}
+
+
+
+function func_qxosi
+{
+  func
+  while true
+  do
+  $BINDIR/statapsv area=qadee2010/qtcprod ver=as3 pf=qxosi_ASqtcprod-as 
+  echo "========================"
+  echo "Select the action"
+  echo "========================"
+  echo "1) START"
+  echo "2) SHUTDOWN"
+  echo "3) STATUS"
+  echo "q) Go to the Main Menu"
+  read qxosi
+  case "$qxosi" in
+    1) $BINDIR/startapsv area=qadee2010/qtcprod ver=as3 pf=qxosi_ASqtcprod-as ;;
+    2) read -p "Do you really want to shutdown qxosi Appserver?[Y/N]" answer
+       if [[ $answer = Y ]] ; then
+         $BINDIR/shutapsv area=qadee2010/qtcprod ver=as3 pf=qxosi_ASqtcprod-as
+       else
+         break
+       fi ;;
+    3) $BINDIR/statapsv area=qadee2010/qtcprod ver=as3 pf=qxosi_ASqtcprod-as ;;
+    q) break ;;
+  esac
+  done
+}
+
+
+
+function func_qxoui
+{
+  func
+  while true
+  do
+  $BINDIR/statapsv area=qadee2010/qtcprod ver=as3 pf=qxoui_ASqtcprod-as
+  echo "========================"
+  echo "Select the action"
+  echo "========================"
+  echo "1) START"
+  echo "2) SHUTDOWN"
+  echo "3) STATUS"
+  echo "q) Go to the Main Menu"
+  read qxoui
+  case "$qxoui" in
+    1) $BINDIR/startapsv area=qadee2010/qtcprod ver=as3 pf=qxoui_ASqtcprod-as ;;
+    2) read -p "Do you really want to shutdown qxoui Appserver?[Y/N]" answer
+       if [[ $answer = Y ]] ; then
+         $BINDIR/shutapsv area=qadee2010/qtcprod ver=as3 pf=qxoui_ASqtcprod-as
+       else
+         break
+       fi ;;
+    3) $BINDIR/statapsv area=qadee2010/qtcprod ver=as3 pf=qxoui_ASqtcprod-as ;;
+    q) break ;;
+  esac
+  done
+}
+
+
+
+function func_qadui_ws
+{
+  func
+  while true
+  do
+  $BINDIR/statws area=qadee2010/qtcprod ver=ws3 pf=qadui_WSqtcprod-ws 
+  echo "========================"
+  echo "Select the action"
+  echo "========================"
+  echo "1) START"
+  echo "2) SHUTDOWN"
+  echo "3) STATUS"
+  echo "q) Go to the Main Menu"
+  read qadui_ws
+  case "$qadui_ws" in
+    1) $BINDIR/startws area=qadee2010/qtcprod ver=ws3 pf=qadui_WSqtcprod-ws ;;
+    2) read -p "Do you really want to shutdown qadui Webspeed?[Y/N]" answer 
+       if [[ $answer = Y ]] ; then
+         $BINDIR/shutws area=qadee2010/qtcprod ver=ws3 pf=qadui_WSqtcprod-ws
+       else
+         break
+       fi ;;
+    3) $BINDIR/statws area=qadee2010/qtcprod ver=ws3 pf=qadui_WSqtcprod-ws ;;
+    q) break ;;
+  esac
+  done
+}
+
+
+
+function func_cpd_ws
+{
+  func
+  while true
+  do
+  $BINDIR/statws area=qadee2010/qtcprod ver=ws3 pf=cpd52_WSqtcprod-ws
+  echo "========================"
+  echo "Select the action"
+  echo "========================"
+  echo "1) START"
+  echo "2) SHUTDOWN"
+  echo "3) STATUS"
+  echo "q) Go to the Main Menu"
+  read cpd_ws
+  case "$cpd_ws" in
+    1) $BINDIR/startws area=qadee2010/qtcprod ver=ws3 pf=cpd52_WSqtcprod-ws  ;;
+    2) read -p "Do you really want to shutdown cpd Webspeed?[Y/N]" answer
+       if [[ $answer = Y ]] ; then
+         $BINDIR/shutws area=qadee2010/qtcprod ver=ws3 pf=cpd52_WSqtcprod-ws
+       else
+         break
+       fi ;;
+    3) $BINDIR/statws area=qadee2010/qtcprod ver=ws3 pf=cpd52_WSqtcprod-ws ;;
+    q) break ;;
+  esac
+  done
+}
+
+
+
+function mainopt
+{
+  while true
+  do
+        echo "========================"
+        echo "Select the AppServer"
+        echo "========================"
+        echo "1) qadfinqtcprod-as"
+        echo "2) qadui_ASqtcprod-as"
+        echo "3) qadsi_ASqtcprod-as"
+        echo "4) qxosi_ASqtcprod-as"
+        echo "5) qxoui_ASqtcprod-as"
+        echo "6) qadui_WSqtcprod-ws (Webspeed)"
+        echo "7) cpd52_WSqtcprod-ws (webspeed)"
+        echo "q) QUIT"
+        read apsrv
+  case "$apsrv" in
+    1) func_qadfin ;;
+    2) func_qadui ;;
+    3) func_qadsi ;;
+    4) func_qxosi ;;
+    5) func_qxoui ;;
+    6) func_qadui_ws ;;
+    7) func_cpd_ws ;;
+    q) exit ;;
+  esac
+  done
+}
+mainopt

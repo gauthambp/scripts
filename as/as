@@ -1,0 +1,45 @@
+#! /bin/sh
+
+select_fun() {
+printf "Select 1 to gather all user connections\n"
+printf "Select 2 to check connections of a specific pid\n"
+printf "Select 3 to disconnect userid from Every DB\n"
+read opt
+}
+
+#The selections that users will get
+while true; do
+printf "Select options\n\n"
+
+printf "1-logstat to view logs in QAD App\n"
+printf "2-qadstat to restart appservers \n"
+printf "3-qadcheckout -To deploy code on Prod\n"
+printf "4-Gather script and promon for db\n"
+printf "5-Check ALL appserver status\n"
+printf "6-Check qxtend qdoc log for ESD\n"
+#printf "7-cpd52_WS$ENVI\n"
+#printf "8-qadui_WS$ENVI\n"
+#printf "9-qadsi_AS$ENVI\n"
+#printf "10-qadui_AS$ENVI\n"
+#printf "11-DB logs\n"
+#printf "12-Shut.all,Start.all,Refresh.all logs\n"
+printf "x -exit\n"
+
+read selection
+
+case "$selection" in
+
+
+1) ./logstat ;;
+2) ./qadstat ;;
+3) echo "Deploy as root ,Enter root password"
+su root qaddepprod.sh ;;
+4) /home/gpujari/dblogin
+;;
+x)
+exit;;
+
+
+esac
+
+done

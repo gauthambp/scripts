@@ -1,0 +1,60 @@
+#! /bin/bash
+
+ver=102B . /usr/local/dlc/bin/dlcverset
+
+getdbconnect()
+{
+echo "enter pid to be disconnected"
+read pidno
+/usr/local/admin/bin/getDBconnection.sh $pidno
+}
+
+
+while true; do
+printf "select db to login displayed\n"
+
+printf "1-mfgprod\n"
+printf "2-cpdprod\n"
+printf "3-admprod\n"
+printf "4-qxodb\n"
+printf "5-qxevents\n"
+printf "6-mfgcustom\n"
+printf "8-tms\n"
+printf "9-gather all user connections\n"
+printf "10-get db connections for a pid\n"
+printf "11-close user connections\n"
+printf "12-List orphaned files using lsof\n"
+
+#selections of promon and getdbconnect function
+#updated on  15 Jan 18 to regroup all the options
+printf "x -exit\n"
+
+read selection
+
+case "$selection" in
+
+
+1) promon /db/qadee2010/qtcprod/mfgprod;;
+2) promon /db/qadee2010/configurator52/qtcprod/cpdprod;;
+3) promon /db/qadee2010/qtcprod/admprod;;
+4) promon /db/qadee2010/qxtend/qxodb/qxodb;;
+5) promon /db/qadee2010/qtcprod/qxevents
+;;
+6) promon /db/qadee2010/custom/mfgcustom
+;;
+8) promon /db/qadee2010/tms/tms
+;;
+9)/usr/local/admin/bin/gather-all-user-connections.sh
+;;
+10)getdbconnect
+;;
+11)/usr/local/admin/bin/close-user-connections.sh
+;;
+12)/usr/local/admin/bin/list-orphaned-files.sh
+;;
+x)
+exit;;
+
+esac
+
+done
