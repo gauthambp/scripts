@@ -136,7 +136,7 @@ fi
 
 fundblogs()
 {
-#read opt 
+#read opt
 
 case "$opt" in
 
@@ -167,7 +167,20 @@ esac
 
 }
 
+funbackuplogs()
+{
 
+#need to take into accoun the rollover of date to the bext day
+LOG1=`find /logs/qadee2010/qtcprod/backuponline.201*.* -mmin -360`
+tail -f $LOG1
+
+
+esac
+
+
+}
+
+#08-Jan-18 added option to view backup logs
 
 
 while true; do
@@ -185,12 +198,13 @@ printf "9-qadsi_AS$ENVI\n"
 printf "10-qadui_AS$ENVI\n"
 printf "11-DB logs\n"
 printf "12-Shut.all,Start.all,Refresh.all logs\n"
+printf "13-Daily Backup logs"
 printf "x -exit\n"
 
 read selection
 
-case "$selection" in 
-      
+case "$selection" in
+
 
 1) catalinalog_fun ;;
 2) catusercount_fun ;;
@@ -216,11 +230,13 @@ qadsi_AS_fun
 10)select_fun
 qadui_AS_fun
 ;;
+11)select_fundb
+fundblogs
+;;
 12)select_funrestart
 funrestart
 ;;
-11)select_fundb
-fundblogs
+13)fundblogs
 ;;
 x)
 exit;;
