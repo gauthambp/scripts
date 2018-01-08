@@ -251,9 +251,8 @@ scp /usr/local/releases/java-webapps/gpujari/prod-builds/serviceCloud/deploy/ser
 copy_tomcat_war_css()
 {
 echo "For test copying to lxbedtwebapp01 & 02"
-scp /usr/local/releases/java-webapps/gpujari/test-builds/CustService/deploy/webapp/css-test.war gpujari@$lxbedtwebapp01:/tmp
-scp /usr/local/releases/java-webapps/gpujari/test-builds/CustService/deploy/webapp/css-test.war gpujari@$lxbedtwebapp02:/tmp
-
+scp /usr/local/releases/java-webapps/gpujari/test-builds/CustService/deploy/webapp/css-test.war gpujari@lxbedtwebapp01:/tmp
+scp /usr/local/releases/java-webapps/gpujari/test-builds/CustService/deploy/webapp/css-test.war gpujari@lxbedtwebapp02:/tmp
 
 }
 
