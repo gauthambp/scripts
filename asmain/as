@@ -320,12 +320,12 @@ case "$selection" in
 ;;
 10)copy_tomcat_war_servicecloud_prod
 ;;
-10)copy_tomcat_war_css
+11)copy_tomcat_war_css
 ;;
 12)select_funrestart
 funrestart
 ;;
-11)select_fundb
+18)select_fundb
 fundblogs
 ;;
 13)select_otherdb
