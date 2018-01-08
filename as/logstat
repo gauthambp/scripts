@@ -157,27 +157,17 @@ esac
 funrestart()
 {
 case "$opt" in
-
 1) tail -f /logs/qadee2010/$ENVI/shut.$TODAY.log ;;
 2) tail -f /logs/qadee2010/$ENVI/start.$TODAY.log ;;
 3) tail -f /logs/qadee2010/$ENVI/refresh.$TODAY.log ;;
-
 esac
-
-
 }
 
 funbackuplogs()
 {
-
-#need to take into accoun the rollover of date to the bext day
+#need to take into accoun the rollover of date to the bext day too
 LOG1=`find /logs/qadee2010/qtcprod/backuponline.201*.* -mmin -360`
 tail -f $LOG1
-
-
-esac
-
-
 }
 
 #08-Jan-18 added option to view backup logs
@@ -244,7 +234,5 @@ exit;;
 esac
 
 done
-
-
 
 }
