@@ -225,6 +225,17 @@ esac
 }
 
 
+select_otherdb()
+{
+case "$opt" in
+
+1) tail -f /db/$dbname/$dbname.lg ;;
+2) tail -f /logs/qadee2010/$ENVI/start.$TODAY.log ;;
+3) tail -f /logs/qadee2010/$ENVI/refresh.$TODAY.log ;;
+
+esac
+
+}
 
 
 
@@ -280,7 +291,7 @@ funrestart
 fundblogs
 ;;
 13)select_otherdb
-fundblogs
+select_otherdb
 ;;
 x)
 exit;;
