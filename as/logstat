@@ -188,7 +188,7 @@ printf "9-qadsi_AS$ENVI\n"
 printf "10-qadui_AS$ENVI\n"
 printf "11-DB logs\n"
 printf "12-Shut.all,Start.all,Refresh.all logs\n"
-printf "13-Daily Backup logs"
+printf "13-Daily Backup logs\n"
 printf "x -exit\n"
 
 read selection
@@ -226,7 +226,7 @@ fundblogs
 12)select_funrestart
 funrestart
 ;;
-13)fundblogs
+13)funbackuplogs
 ;;
 x)
 exit;;
