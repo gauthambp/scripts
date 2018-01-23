@@ -9,6 +9,14 @@ read pidno
 /usr/local/admin/bin/getDBconnection.sh $pidno
 }
 
+#trying to add a function to do promon and mpro for a DB
+
+selectdboptions()
+{
+  echo "Select 1 for promon"
+  echo "Select 2 for mpro"
+}
+
 
 while true; do
 printf "select db to login displayed\n"
